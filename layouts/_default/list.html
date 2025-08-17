@@ -1,0 +1,54 @@
+{{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<div class="header">
+    <h1>{{ .Title }}</h1>
+    {{ if .Description }}
+    <p style="font-size: 1.2rem; margin-top: 15px; opacity: 0.9;">{{ .Description }}</p>
+    {{ end }}
+</div>
+
+{{ if .Content }}
+<div class="content-section">
+    {{ .Content }}
+</div>
+{{ end }}
+
+{{ if .Pages }}
+<div class="posts-grid">
+    {{ range .Pages }}
+    <article class="post-card">
+        <div class="post-header">
+            <h2 class="post-title">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h2>
+            {{ if .Date }}
+            <time class="post-date">{{ .Date.Format "January 2, 2006" }}</time>
+            {{ end }}
+        </div>
+        
+        <div class="post-content">
+            <p class="post-summary">{{ .Summary }}</p>
+        </div>
+        
+        <div class="post-footer">
+            {{ if .Params.tags }}
+            <div class="post-tags">
+                {{ range .Params.tags }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+            <a href="{{ .RelPermalink }}" class="read-more-btn">Read More</a>
+        </div>
+    </article>
+    {{ end }}
+</div>
+{{ else if not .Content }}
+<div class="empty-state">
+    <div class="empty-icon">📝</div>
+    <h3>No content yet</h3>
+    <p>Check back soon for new {{ .Title | lower }} content!</p>
+</div>
+{{ end }}
+{{ end }}

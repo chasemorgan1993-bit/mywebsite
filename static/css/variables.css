@@ -1,0 +1,105 @@
+/* TheMerchantGuide Color System */
+:root {
+  /* Primary Green Palette */
+  --green-primary: #7ED957;        /* Main brand green - buttons, CTAs */
+  --green-primary-light: #ACE1AF;  /* Light green - borders, highlights */
+  --green-primary-dark: #6BC242;   /* Darker green - hover states */
+  
+  /* Semantic Green Colors */
+  --color-primary: var(--green-primary);
+  --color-primary-light: var(--green-primary-light);
+  --color-primary-dark: var(--green-primary-dark);
+  
+  /* Text Colors */
+  --text-primary: #36454F;         /* Main text color */
+  --text-secondary: #666666;       /* Secondary text */
+  --text-muted: #B0B0B0;          /* Muted text */
+  --text-on-green: #36454F;       /* Text on green backgrounds */
+  --text-link: var(--green-primary); /* Link color */
+  --text-link-hover: var(--green-primary-dark); /* Link hover */
+  
+  /* Background Colors */
+  --bg-primary: #F5F5DC;          /* Main background (beige) */
+  --bg-secondary: #FAFAFA;        /* Secondary background */
+  --bg-card: #F5F5DC;            /* Card backgrounds */
+  --bg-accent: rgba(245, 245, 220, 0.1); /* Subtle accent backgrounds */
+  --bg-gradient-primary: linear-gradient(135deg, var(--green-primary-light), var(--green-primary));
+  --bg-gradient-card: linear-gradient(135deg, #F5F5DC 0%, #FAF7F0 50%, #F5F5DC 100%);
+  
+  /* Border Colors */
+  --border-primary: var(--green-primary-light); /* Main borders */
+  --border-secondary: #E2E8F0;    /* Secondary borders */
+  --border-accent: var(--green-primary); /* Accent borders */
+  --border-hover: var(--green-primary); /* Hover border states */
+  
+  /* Button Colors */
+  --btn-primary-bg: var(--bg-gradient-primary);
+  --btn-primary-text: var(--text-on-green);
+  --btn-primary-border: transparent;
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--green-primary);
+  --btn-secondary-border: var(--green-primary);
+  
+  /* Status Colors */
+  --color-success: var(--green-primary);
+  --color-success-light: var(--green-primary-light);
+  --color-warning: #FF6B35;
+  --color-error: #DC2626;
+  --color-info: #0070BA;
+  
+  /* Shadow Colors */
+  --shadow-green: rgba(172, 225, 175, 0.3);
+  --shadow-green-hover: rgba(172, 225, 175, 0.4);
+  --shadow-primary: rgba(0, 0, 0, 0.1);
+  
+  /* Opacity Variants */
+  --green-10: rgba(126, 217, 87, 0.1);
+  --green-20: rgba(126, 217, 87, 0.2);
+  --green-30: rgba(126, 217, 87, 0.3);
+  --green-40: rgba(126, 217, 87, 0.4);
+  --green-50: rgba(126, 217, 87, 0.5);
+  
+  /* Component-Specific Colors */
+  --nav-bg: var(--bg-accent);
+  --nav-border: var(--border-primary);
+  --nav-link: var(--bg-primary);
+  --nav-link-hover: var(--bg-gradient-primary);
+  --nav-link-active: var(--bg-gradient-primary);
+  
+  --header-bg: var(--bg-gradient-card);
+  --header-text: var(--text-primary);
+  --header-accent: var(--green-primary);
+  
+  --card-bg: var(--bg-card);
+  --card-border: var(--border-primary);
+  --card-hover-border: var(--border-accent);
+  --card-shadow: var(--shadow-primary);
+  --card-hover-shadow: var(--shadow-green-hover);
+  
+  --form-bg: var(--bg-secondary);
+  --form-border: var(--border-primary);
+  --form-focus-border: var(--border-accent);
+  --form-focus-shadow: var(--shadow-green);
+  
+  /* Tag Colors */
+  --tag-bg: var(--green-20);
+  --tag-text: var(--text-primary);
+  --tag-border: var(--green-30);
+  
+  /* Gradient Combinations */
+  --gradient-primary: linear-gradient(135deg, var(--green-primary-light) 0%, var(--green-primary) 100%);
+  --gradient-header: linear-gradient(135deg, #F5F5DC 0%, #FAF7F0 50%, #F5F5DC 100%);
+  --gradient-card: linear-gradient(135deg, #F5F5DC 0%, #FAF7F0 100%);
+  --gradient-divider: linear-gradient(135deg, var(--green-primary-light), var(--green-primary));
+}
+
+/* Dark mode support (future-proofing) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #F5F5DC;
+    --text-secondary: #B0B0B0;
+    --bg-primary: #2F2F2F;
+    --bg-secondary: #36454F;
+    --border-secondary: #4A5568;
+  }
+}

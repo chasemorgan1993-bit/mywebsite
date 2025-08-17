@@ -1,0 +1,216 @@
+{{ define "title" }}TheMerchantGuide - Find Your Perfect Payment Processor{{ end }}
+
+{{ define "main" }}
+<div class="header">
+    <h1>🧭 The<span class="highlight">Merchant</span>Guide</h1>
+    <p>The smart way for small retailers, e-commerce startups, and regional businesses to find payment processors that actually fit their needs and budget</p>
+</div>
+
+<div class="form-card">
+    <form id="processorForm">
+        <div class="form-group">
+            <label for="business_type">What best describes your business?</label>
+            <select id="business_type" name="business_type" required>
+                <option value="">Select your business type</option>
+                <option value="retail">Small Retail Store (physical location)</option>
+                <option value="online">E-commerce Startup (online sales)</option>
+                <option value="multi_location">Regional Business (2+ locations)</option>
+                <option value="restaurant">Restaurant/Food Service</option>
+                <option value="service">Local Service Business</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="business_stage">What stage is your business in?</label>
+            <select id="business_stage" name="business_stage" required>
+                <option value="">Select business stage</option>
+                <option value="just_starting">Just starting (pre-launch or first 6 months)</option>
+                <option value="growing">Growing business (6 months - 2 years)</option>
+                <option value="established">Established business (2+ years)</option>
+                <option value="expanding">Expanding regionally (adding locations)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <div class="form-group">
+                <label for="monthly_volume">Expected Monthly Sales ($)</label>
+                <input type="number" id="monthly_volume" name="monthly_volume" placeholder="e.g. 8000" required>
+                <small style="color: #666; font-size: 14px;">Enter your current or projected monthly sales volume</small>
+            </div>
+            <div class="form-group">
+                <label for="avg_transaction">Typical Transaction Amount ($)</label>
+                <input type="number" id="avg_transaction" name="avg_transaction" placeholder="e.g. 45" required>
+                <small style="color: #666; font-size: 14px;">Average dollar amount per sale</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="payment_environment">Where do you primarily accept payments?</label>
+            <select id="payment_environment" name="payment_environment" required>
+                <option value="">Select payment environment</option>
+                <option value="in_person_only">In-person only (physical store/location)</option>
+                <option value="online_only">Online only (website/app)</option>
+                <option value="both_equal">Both in-person and online (roughly equal)</option>
+                <option value="mostly_in_person">Mostly in-person with some online</option>
+                <option value="mostly_online">Mostly online with some in-person</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="budget_priority">What's most important for your budget?</label>
+            <select id="budget_priority" name="budget_priority" required>
+                <option value="">Select budget priority</option>
+                <option value="lowest_total_cost">Lowest total cost per month</option>
+                <option value="no_monthly_fees">No monthly fees (pay-per-transaction only)</option>
+                <option value="predictable_costs">Predictable monthly costs</option>
+                <option value="value_for_features">Good value for features included</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="priority_features">What's your biggest priority? (Choose your top concerns)</label>
+            <div class="priority-features">
+                <div class="feature-category">
+                    <div class="category-header">
+                        <span class="category-icon">💰</span>
+                        <h4>Cost & Fees</h4>
+                    </div>
+                    <div class="feature-options">
+                        <label class="feature-option">
+                            <input type="checkbox" name="priority_features" value="lowest_fees">
+                            <div class="feature-content">
+                                <strong>Lowest processing fees</strong>
+                                <small>Minimize per-transaction costs</small>
+                            </div>
+                        </label>
+                        <label class="feature-option">
+                            <input type="checkbox" name="priority_features" value="no_monthly_costs">
+                            <div class="feature-content">
+                                <strong>No monthly fees</strong>
+                                <small>Pay only when you sell</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-header">
+                        <span class="category-icon">🏪</span>
+                        <h4>Store Operations</h4>
+                    </div>
+                    <div class="feature-options">
+                        <label class="feature-option">
+                            <input type="checkbox" name="priority_features" value="pos_hardware">
+                            <div class="feature-content">
+                                <strong>Free POS equipment</strong>
+                                <small>Card readers, registers, tablets</small>
+                            </div>
+                        </label>
+                        <label class="feature-option">
+                            <input type="checkbox" name="priority_features" value="inventory_tools">
+                            <div class="feature-content">
+                                <strong>Inventory management</strong>
+                                <small>Track stock, automatic reordering</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-header">
+                        <span class="category-icon">🚀</span>
+                        <h4>Growth & Online</h4>
+                    </div>
+                    <div class="feature-options">
+                        <label class="feature-option">
+                            <input type="checkbox" name="priority_features" value="online_store">
+                            <div class="feature-content">
+                                <strong>Built-in website builder</strong>
+                                <small>Create online store easily</small>
+                            </div>
+                        </label>
+                        <label class="feature-option">
+                            <input type="checkbox" name="priority_features" value="easy_integration">
+                            <div class="feature-content">
+                                <strong>Easy setup & integration</strong>
+                                <small>Get started quickly</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-header">
+                        <span class="category-icon">📊</span>
+                        <h4>Business Management</h4>
+                    </div>
+                    <div class="feature-options">
+                        <label class="feature-option">
+                            <input type="checkbox" name="priority_features" value="detailed_analytics">
+                            <div class="feature-content">
+                                <strong>Sales reports & analytics</strong>
+                                <small>Track performance and trends</small>
+                            </div>
+                        </label>
+                        <label class="feature-option">
+                            <input type="checkbox" name="priority_features" value="customer_support">
+                            <div class="feature-content">
+                                <strong>Excellent customer support</strong>
+                                <small>Phone, chat, and email help</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="button">Find My Best Options</button>
+    </form>
+
+    <div class="loading">
+        <p>🔍 Finding the best processors for your business...</p>
+    </div>
+
+    <div class="error">
+        <p>❌ Please fill in all fields to get recommendations.</p>
+    </div>
+</div>
+
+<div class="results" id="results">
+    <h2 style="margin-bottom: 20px; color: #F5F5DC;">🎯 Your Top Recommendations</h2>
+    <div style="background: #F5F5DC; padding: 30px; border-radius: 20px; margin-bottom: 25px; color: #36454F;">
+        <h3 style="margin-bottom: 15px;">Square</h3>
+        <p style="color: #7ED957; font-weight: 500; margin-bottom: 10px;">💰 2.6% + $0.10 per transaction, $0/month</p>
+        <p style="margin-bottom: 15px;">Perfect for small retail businesses with transparent pricing and free POS equipment.</p>
+        <a href="https://squareup.com" target="_blank" style="color: #7ED957; font-weight: 600;">Learn More →</a>
+    </div>
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+document.getElementById('processorForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Basic validation
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+
+    if (!data.business_type || !data.monthly_volume || !data.avg_transaction || !data.payment_environment || !data.budget_priority) {
+        document.querySelector('.error').style.display = 'block';
+        return;
+    }
+
+    document.querySelector('.error').style.display = 'none';
+    document.querySelector('.loading').style.display = 'block';
+    document.querySelector('.results').style.display = 'none';
+
+    // Simulate processing time
+    setTimeout(() => {
+        document.querySelector('.loading').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }, 1500);
+});
+</script>
+{{ end }}

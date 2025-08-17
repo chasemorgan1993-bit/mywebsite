@@ -1,0 +1,265 @@
+<div class="calculator-container">
+    <div class="calculator-inputs">
+        <h3>Enter Your Business Information</h3>
+        
+        <div class="input-row">
+            <div class="input-group">
+                <label for="monthly-sales">Monthly Sales Volume ($)</label>
+                <input type="number" id="monthly-sales" placeholder="e.g. 10000" value="10000">
+            </div>
+            <div class="input-group">
+                <label for="avg-transaction">Average Transaction ($)</label>
+                <input type="number" id="avg-transaction" placeholder="e.g. 50" value="50">
+            </div>
+        </div>
+        
+        <button onclick="calculateFees()" class="calculate-btn">Calculate Fees</button>
+    </div>
+
+    <div class="results-container" id="calculator-results">
+        <h3>Monthly Cost Comparison</h3>
+        <div class="processor-results" id="processor-grid">
+            <!-- Results will be populated here -->
+        </div>
+    </div>
+</div>
+
+<script>
+function calculateFees() {
+    const monthlySales = parseFloat(document.getElementById('monthly-sales').value) || 0;
+    const avgTransaction = parseFloat(document.getElementById('avg-transaction').value) || 0;
+    
+    if (monthlySales <= 0 || avgTransaction <= 0) {
+        alert('Please enter valid amounts for both fields.');
+        return;
+    }
+    
+    const transactionCount = monthlySales / avgTransaction;
+    
+    const processors = [
+        {
+            name: 'Square',
+            rate: 0.026,
+            fixedFee: 0.10,
+            monthlyFee: 0,
+            color: '#7ED957',
+            bestFor: 'Retail stores, restaurants'
+        },
+        {
+            name: 'Stripe',
+            rate: 0.029,
+            fixedFee: 0.30,
+            monthlyFee: 0,
+            color: '#635BFF',
+            bestFor: 'Online businesses, e-commerce'
+        },
+        {
+            name: 'PayPal',
+            rate: 0.029,
+            fixedFee: 0.30,
+            monthlyFee: 0,
+            color: '#0070BA',
+            bestFor: 'Small online sellers'
+        },
+        {
+            name: 'Authorize.Net',
+            rate: 0.029,
+            fixedFee: 0.30,
+            monthlyFee: 25,
+            color: '#FF6B35',
+            bestFor: 'Established businesses'
+        }
+    ];
+    
+    const results = processors.map(processor => {
+        const transactionFees = (monthlySales * processor.rate) + (transactionCount * processor.fixedFee);
+        const totalCost = transactionFees + processor.monthlyFee;
+        
+        return {
+            ...processor,
+            transactionFees: transactionFees,
+            totalCost: totalCost,
+            effectiveRate: (totalCost / monthlySales) * 100
+        };
+    });
+    
+    // Sort by total cost
+    results.sort((a, b) => a.totalCost - b.totalCost);
+    
+    // Display results
+    const resultsHTML = results.map((result, index) => `
+        <div class="processor-card ${index === 0 ? 'best-deal' : ''}">
+            ${index === 0 ? '<div class="best-badge">Best Deal</div>' : ''}
+            <h4>${result.name}</h4>
+            <div class="cost-breakdown">
+                <div class="total-cost">$${result.totalCost.toFixed(2)}/month</div>
+                <div class="effective-rate">${result.effectiveRate.toFixed(2)}% effective rate</div>
+            </div>
+            <div class="fee-details">
+                <div>Transaction fees: $${result.transactionFees.toFixed(2)}</div>
+                <div>Monthly fee: $${result.monthlyFee.toFixed(2)}</div>
+                <div>Rate: ${(result.rate * 100).toFixed(1)}% + $${result.fixedFee.toFixed(2)}</div>
+            </div>
+            <div class="best-for">Best for: ${result.bestFor}</div>
+        </div>
+    `).join('');
+    
+    document.getElementById('processor-grid').innerHTML = resultsHTML;
+    document.getElementById('calculator-results').style.display = 'block';
+}
+
+// Calculate on page load with default values
+document.addEventListener('DOMContentLoaded', function() {
+    calculateFees();
+});
+</script>
+
+<style>
+.calculator-container {
+    margin: 30px 0;
+}
+
+.calculator-inputs {
+    background: #FAFAFA;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #E2E8F0;
+    margin-bottom: 30px;
+}
+
+.calculator-inputs h3 {
+    margin-bottom: 20px;
+    color: #36454F;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #36454F;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ACE1AF;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.calculate-btn {
+    background: linear-gradient(135deg, #ACE1AF, #7ED957);
+    color: #36454F;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(172, 225, 175, 0.4);
+}
+
+.results-container {
+    margin-top: 30px;
+}
+
+.results-container h3 {
+    margin-bottom: 20px;
+    color: #36454F;
+}
+
+.processor-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.processor-card {
+    background: #FAFAFA;
+    border: 2px solid #E2E8F0;
+    border-radius: 15px;
+    padding: 25px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.processor-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.processor-card.best-deal {
+    border-color: #7ED957;
+    background: linear-gradient(135deg, #F5F5DC 0%, #FAF7F0 100%);
+}
+
+.best-badge {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: linear-gradient(135deg, #7ED957, #ACE1AF);
+    color: #36454F;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.processor-card h4 {
+    margin: 0 0 15px 0;
+    color: #36454F;
+    font-size: 1.3rem;
+}
+
+.total-cost {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #7ED957;
+    margin-bottom: 5px;
+}
+
+.effective-rate {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.fee-details {
+    border-top: 1px solid #E2E8F0;
+    padding-top: 15px;
+    margin-bottom: 15px;
+}
+
+.fee-details div {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #36454F;
+}
+
+.best-for {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+    .processor-results {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
