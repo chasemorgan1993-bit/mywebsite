@@ -1,63 +1,63 @@
-/* TheMerchantGuide Color System */
+/* TheMerchantGuide Color System - Dark Theme with Golden Accents */
 :root {
-  /* Primary Green Palette */
-  --green-primary: #7ED957;        /* Main brand green - buttons, CTAs */
-  --green-primary-light: #ACE1AF;  /* Light green - borders, highlights */
-  --green-primary-dark: #6BC242;   /* Darker green - hover states */
+  /* Primary Golden Palette (inspired by rolftaylor.com) */
+  --golden-primary: #DCA54A;       /* Main golden accent - like rolftaylor */
+  --golden-primary-light: #E8B866; /* Light golden - highlights */
+  --golden-primary-dark: #C4923D;  /* Darker golden - hover states */
   
-  /* Semantic Green Colors */
-  --color-primary: var(--green-primary);
-  --color-primary-light: var(--green-primary-light);
-  --color-primary-dark: var(--green-primary-dark);
+  /* Semantic Primary Colors */
+  --color-primary: var(--golden-primary);
+  --color-primary-light: var(--golden-primary-light);
+  --color-primary-dark: var(--golden-primary-dark);
   
-  /* Text Colors */
-  --text-primary: #36454F;         /* Main text color */
-  --text-secondary: #666666;       /* Secondary text */
-  --text-muted: #B0B0B0;          /* Muted text */
-  --text-on-green: #36454F;       /* Text on green backgrounds */
-  --text-link: var(--green-primary); /* Link color */
-  --text-link-hover: var(--green-primary-dark); /* Link hover */
+  /* Text Colors - High Contrast Like Rolf Taylor */
+  --text-primary: #FFFFFF;         /* Main text - white for dark backgrounds */
+  --text-secondary: #FAF5E5;       /* Secondary text - soft cream */
+  --text-muted: #B8B8B8;          /* Muted text - light gray */
+  --text-on-golden: #1B1B1B;      /* Text on golden backgrounds - dark */
+  --text-link: var(--golden-primary); /* Golden links */
+  --text-link-hover: var(--golden-primary-light); /* Lighter golden on hover */
   
-  /* Background Colors */
-  --bg-primary: #F5F5DC;          /* Main background (beige) */
-  --bg-secondary: #FAFAFA;        /* Secondary background */
-  --bg-card: #F5F5DC;            /* Card backgrounds */
-  --bg-accent: rgba(245, 245, 220, 0.1); /* Subtle accent backgrounds */
-  --bg-gradient-primary: linear-gradient(135deg, var(--green-primary-light), var(--green-primary));
-  --bg-gradient-card: linear-gradient(135deg, #F5F5DC 0%, #FAF7F0 50%, #F5F5DC 100%);
+  /* Background Colors - Olive Theme */
+  --bg-primary: #6B6B47;          /* Main background - olive green from logo */
+  --bg-secondary: #7A7A55;        /* Secondary background - slightly lighter olive */
+  --bg-card: #5A5A3F;             /* Card backgrounds - darker olive */
+  --bg-accent: rgba(220, 165, 74, 0.1); /* Subtle golden accent backgrounds */
+  --bg-gradient-primary: linear-gradient(135deg, var(--golden-primary), var(--golden-primary-dark));
+  --bg-gradient-card: linear-gradient(135deg, #5A5A3F 0%, #7A7A55 50%, #5A5A3F 100%);
   
   /* Border Colors */
-  --border-primary: var(--green-primary-light); /* Main borders */
-  --border-secondary: #E2E8F0;    /* Secondary borders */
-  --border-accent: var(--green-primary); /* Accent borders */
-  --border-hover: var(--green-primary); /* Hover border states */
+  --border-primary: var(--golden-primary); /* Golden borders */
+  --border-secondary: #8A8A67;    /* Lighter olive borders */
+  --border-accent: var(--golden-primary-light); /* Light golden accent borders */
+  --border-hover: var(--golden-primary-light); /* Hover border states */
   
   /* Button Colors */
   --btn-primary-bg: var(--bg-gradient-primary);
-  --btn-primary-text: var(--text-on-green);
+  --btn-primary-text: var(--text-on-golden);
   --btn-primary-border: transparent;
   --btn-secondary-bg: transparent;
-  --btn-secondary-text: var(--green-primary);
-  --btn-secondary-border: var(--green-primary);
+  --btn-secondary-text: var(--golden-primary);
+  --btn-secondary-border: var(--golden-primary);
   
   /* Status Colors */
-  --color-success: var(--green-primary);
-  --color-success-light: var(--green-primary-light);
-  --color-warning: #FF6B35;
-  --color-error: #DC2626;
-  --color-info: #0070BA;
+  --color-success: var(--golden-primary); /* Golden for success */
+  --color-success-light: var(--golden-primary-light);
+  --color-warning: #E8B866;        /* Light golden for warnings */
+  --color-error: #E85A4F;          /* Warm red for errors */
+  --color-info: var(--golden-primary); /* Golden for info */
   
   /* Shadow Colors */
-  --shadow-green: rgba(172, 225, 175, 0.3);
-  --shadow-green-hover: rgba(172, 225, 175, 0.4);
-  --shadow-primary: rgba(0, 0, 0, 0.1);
+  --shadow-golden: rgba(220, 165, 74, 0.3);
+  --shadow-golden-hover: rgba(220, 165, 74, 0.4);
+  --shadow-primary: rgba(0, 0, 0, 0.3);
   
   /* Opacity Variants */
-  --green-10: rgba(126, 217, 87, 0.1);
-  --green-20: rgba(126, 217, 87, 0.2);
-  --green-30: rgba(126, 217, 87, 0.3);
-  --green-40: rgba(126, 217, 87, 0.4);
-  --green-50: rgba(126, 217, 87, 0.5);
+  --golden-10: rgba(220, 165, 74, 0.1);
+  --golden-20: rgba(220, 165, 74, 0.2);
+  --golden-30: rgba(220, 165, 74, 0.3);
+  --golden-40: rgba(220, 165, 74, 0.4);
+  --golden-50: rgba(220, 165, 74, 0.5);
   
   /* Component-Specific Colors */
   --nav-bg: var(--bg-accent);
@@ -74,32 +74,32 @@
   --card-border: var(--border-primary);
   --card-hover-border: var(--border-accent);
   --card-shadow: var(--shadow-primary);
-  --card-hover-shadow: var(--shadow-green-hover);
+  --card-hover-shadow: var(--shadow-golden-hover);
   
   --form-bg: var(--bg-secondary);
-  --form-border: var(--border-primary);
+  --form-border: var(--border-secondary);
   --form-focus-border: var(--border-accent);
-  --form-focus-shadow: var(--shadow-green);
+  --form-focus-shadow: var(--shadow-golden);
   
   /* Tag Colors */
-  --tag-bg: var(--green-20);
+  --tag-bg: var(--golden-20);
   --tag-text: var(--text-primary);
-  --tag-border: var(--green-30);
+  --tag-border: var(--golden-30);
   
   /* Gradient Combinations */
-  --gradient-primary: linear-gradient(135deg, var(--green-primary-light) 0%, var(--green-primary) 100%);
-  --gradient-header: linear-gradient(135deg, #F5F5DC 0%, #FAF7F0 50%, #F5F5DC 100%);
-  --gradient-card: linear-gradient(135deg, #F5F5DC 0%, #FAF7F0 100%);
-  --gradient-divider: linear-gradient(135deg, var(--green-primary-light), var(--green-primary));
+  --gradient-primary: linear-gradient(135deg, var(--golden-primary-light) 0%, var(--golden-primary) 100%);
+  --gradient-header: linear-gradient(135deg, #5A5A3F 0%, #7A7A55 50%, #5A5A3F 100%);
+  --gradient-card: linear-gradient(135deg, #5A5A3F 0%, #7A7A55 100%);
+  --gradient-divider: linear-gradient(135deg, var(--golden-primary-light), var(--golden-primary));
 }
 
-/* Dark mode support (future-proofing) */
-@media (prefers-color-scheme: dark) {
+/* Dark mode support (already implemented as default) */
+@media (prefers-color-scheme: light) {
   :root {
-    --text-primary: #F5F5DC;
-    --text-secondary: #B0B0B0;
-    --bg-primary: #2F2F2F;
-    --bg-secondary: #36454F;
-    --border-secondary: #4A5568;
+    /* Light mode overrides if needed */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F5F5;
+    --text-primary: #1B1B1B;
+    --text-secondary: #666666;
   }
 }

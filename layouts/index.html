@@ -1,12 +1,14 @@
 {{ define "title" }}TheMerchantGuide - Find Your Perfect Payment Processor{{ end }}
 
 {{ define "main" }}
-<div class="header">
-    <h1>🧭 The<span class="highlight">Merchant</span>Guide</h1>
-    <p>The smart way for small retailers, e-commerce startups, and regional businesses to find payment processors that actually fit their needs and budget</p>
-</div>
+<section class="hero">
+    <h1>Find the perfect payment solution for your <span class="highlight">small business</span></h1>
+    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">Stop wasting time navigating complex payment systems- get rid of the noise and get simple solutions.</p>
+    <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" style="background: var(--bg-gradient-primary); color: var(--text-on-golden); padding: 16px 32px; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; transition: transform 0.2s;">Get Started</button>
+</section>
 
-<div class="form-card">
+<section class="section" id="quiz">
+    <div class="card">
     <form id="processorForm">
         <div class="form-group">
             <label for="business_type">What best describes your business?</label>
@@ -174,7 +176,8 @@
     <div class="error">
         <p>❌ Please fill in all fields to get recommendations.</p>
     </div>
-</div>
+    </div>
+</section>
 
 <div class="results" id="results">
     <h2 style="margin-bottom: 20px; color: #F5F5DC;">🎯 Your Top Recommendations</h2>
