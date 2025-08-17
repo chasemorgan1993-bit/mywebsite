@@ -4,7 +4,7 @@
 
 ## 🚀 Live Site
 
-Visit [themerchantguide.com](https://themerchantguide.com) to use the payment processor finder tool.
+Visit the live site to use the payment processor finder tool.
 
 ## 📋 Features
 
@@ -30,8 +30,8 @@ Visit [themerchantguide.com](https://themerchantguide.com) to use the payment pr
 ### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/themerchantguide.git
-cd themerchantguide
+git clone https://github.com/chasemorgan1993-bit/mywebsite.git
+cd mywebsite
 
 # Start the development server
 hugo server
@@ -41,7 +41,7 @@ hugo server
 
 ### File Structure
 ```
-themerchantguide/
+mywebsite/
 ├── content/
 │   ├── blog/           # Blog posts
 │   ├── podcasts/       # Podcast episodes
@@ -111,4 +111,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-For questions about payment processing or the site, visit [themerchantguide.com](https://themerchantguide.com) or use the contact form.
+For questions about payment processing or the site, visit the live site or use the contact form.
