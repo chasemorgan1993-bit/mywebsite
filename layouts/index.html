@@ -2,7 +2,7 @@
 
 {{ define "main" }}
 <section class="hero">
-    <h1>Find the perfect payment solution for your <span class="highlight">small business</span></h1>
+    <h1>Say Goodbye to Payment Stress—Your <span class="highlight">All-In-One</span> Payment Solution Starts Here</h1>
     <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">Stop wasting time navigating complex payment systems- get rid of the noise and get simple solutions.</p>
     <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" style="background: var(--bg-gradient-primary); color: var(--text-on-golden); padding: 16px 32px; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; transition: transform 0.2s;">Get Started</button>
 </section>
@@ -192,6 +192,254 @@
 
 {{ define "scripts" }}
 <script>
+// Comprehensive processor database
+const processors = {
+    'retail': [
+        {
+            name: 'Square',
+            rate: 2.6,
+            fixedFee: 0.10,
+            monthlyFee: 0,
+            features: ['Free POS hardware', 'Inventory management', 'Quick setup', 'Same-day deposits'],
+            bestFor: 'Small to medium retail stores',
+            pros: 'No monthly fees, excellent POS system, easy setup',
+            cons: 'Higher rates for online transactions',
+            website: 'https://squareup.com'
+        },
+        {
+            name: 'Clover',
+            rate: 2.3,
+            fixedFee: 0.10,
+            monthlyFee: 14.95,
+            features: ['Advanced POS', 'Employee management', 'Loyalty programs', 'Advanced reporting'],
+            bestFor: 'Growing retail businesses',
+            pros: 'Powerful POS features, good for scaling',
+            cons: 'Monthly fee, more complex setup',
+            website: 'https://www.clover.com'
+        },
+        {
+            name: 'SumUp',
+            rate: 2.65,
+            fixedFee: 0.00,
+            monthlyFee: 0,
+            features: ['Mobile card reader', 'Simple pricing', 'Quick payments', 'Basic reporting'],
+            bestFor: 'Very small retail or mobile businesses',
+            pros: 'No monthly fees, simple setup',
+            cons: 'Limited advanced features',
+            website: 'https://sumup.com'
+        }
+    ],
+    'online': [
+        {
+            name: 'Stripe',
+            rate: 2.9,
+            fixedFee: 0.30,
+            monthlyFee: 0,
+            features: ['Developer-friendly API', 'Global payments', 'Fraud protection', 'Subscription billing'],
+            bestFor: 'E-commerce and tech-savvy businesses',
+            pros: 'Excellent developer tools, global reach',
+            cons: 'Requires technical knowledge for setup',
+            website: 'https://stripe.com'
+        },
+        {
+            name: 'Shopify Payments',
+            rate: 2.6,
+            fixedFee: 0.30,
+            monthlyFee: 0,
+            features: ['Seamless Shopify integration', 'Multiple payment methods', 'Easy setup', 'Built-in analytics'],
+            bestFor: 'Shopify store owners',
+            pros: 'Perfect Shopify integration, competitive rates',
+            cons: 'Only works with Shopify stores',
+            website: 'https://www.shopify.com/payments'
+        },
+        {
+            name: 'PayPal',
+            rate: 2.9,
+            fixedFee: 0.30,
+            monthlyFee: 0,
+            features: ['Buyer protection', 'PayPal checkout', 'Mobile payments', 'Invoicing'],
+            bestFor: 'Small online businesses and marketplaces',
+            pros: 'Trusted brand, easy customer checkout',
+            cons: 'Account holds possible, limited customization',
+            website: 'https://www.paypal.com'
+        }
+    ],
+    'service': [
+        {
+            name: 'PayPal Here',
+            rate: 2.7,
+            fixedFee: 0.00,
+            monthlyFee: 0,
+            features: ['Mobile card reader', 'Invoicing', 'PayPal integration', 'Quick setup'],
+            bestFor: 'Service businesses and contractors',
+            pros: 'Mobile-first, easy invoicing, trusted brand',
+            cons: 'Limited POS features, account restrictions possible',
+            website: 'https://www.paypal.com/us/business/pos'
+        },
+        {
+            name: 'SumUp',
+            rate: 2.65,
+            fixedFee: 0.00,
+            monthlyFee: 0,
+            features: ['Mobile payments', 'Simple setup', 'Invoice by email', 'Basic analytics'],
+            bestFor: 'Mobile service providers',
+            pros: 'Simple pricing, mobile-focused, no contracts',
+            cons: 'Limited advanced features',
+            website: 'https://sumup.com'
+        },
+        {
+            name: 'Square',
+            rate: 2.6,
+            fixedFee: 0.10,
+            monthlyFee: 0,
+            features: ['Mobile POS', 'Appointment booking', 'Customer management', 'Online invoicing'],
+            bestFor: 'Service businesses with scheduling needs',
+            pros: 'Comprehensive service business tools',
+            cons: 'Can be overkill for simple needs',
+            website: 'https://squareup.com'
+        }
+    ],
+    'restaurant': [
+        {
+            name: 'Toast',
+            rate: 2.49,
+            fixedFee: 0.15,
+            monthlyFee: 75,
+            features: ['Restaurant-specific POS', 'Kitchen display', 'Table management', 'Staff scheduling'],
+            bestFor: 'Full-service restaurants',
+            pros: 'Built for restaurants, comprehensive features',
+            cons: 'Higher monthly cost, complex for simple needs',
+            website: 'https://pos.toasttab.com'
+        },
+        {
+            name: 'Square for Restaurants',
+            rate: 2.6,
+            fixedFee: 0.10,
+            monthlyFee: 60,
+            features: ['Table management', 'Kitchen tickets', 'Tip adjustments', 'Menu management'],
+            bestFor: 'Small to medium restaurants',
+            pros: 'Restaurant-focused, reasonable pricing',
+            cons: 'Monthly fee for restaurant features',
+            website: 'https://squareup.com/us/en/point-of-sale/restaurants'
+        },
+        {
+            name: 'Clover',
+            rate: 2.3,
+            fixedFee: 0.10,
+            monthlyFee: 14.95,
+            features: ['Quick service POS', 'Order management', 'Employee tracking', 'Inventory'],
+            bestFor: 'Quick service restaurants',
+            pros: 'Fast transactions, good for high volume',
+            cons: 'Restaurant features cost extra',
+            website: 'https://www.clover.com'
+        }
+    ],
+    'multi_location': [
+        {
+            name: 'Clover',
+            rate: 2.3,
+            fixedFee: 0.10,
+            monthlyFee: 14.95,
+            features: ['Multi-location management', 'Centralized reporting', 'Employee management', 'Inventory sync'],
+            bestFor: 'Regional businesses with multiple locations',
+            pros: 'Excellent multi-location features, detailed reporting',
+            cons: 'Monthly fees add up across locations',
+            website: 'https://www.clover.com'
+        },
+        {
+            name: 'Shopify POS',
+            rate: 2.4,
+            fixedFee: 0.00,
+            monthlyFee: 89,
+            features: ['Unified inventory', 'Multi-location sync', 'Staff permissions', 'Advanced analytics'],
+            bestFor: 'Retail chains with online presence',
+            pros: 'Excellent for omnichannel retail',
+            cons: 'Higher monthly cost, complex setup',
+            website: 'https://www.shopify.com/pos'
+        },
+        {
+            name: 'Lightspeed',
+            rate: 2.6,
+            fixedFee: 0.10,
+            monthlyFee: 69,
+            features: ['Enterprise POS', 'Advanced inventory', 'Multi-location reporting', 'E-commerce integration'],
+            bestFor: 'Growing retail chains',
+            pros: 'Powerful features for scaling businesses',
+            cons: 'Higher cost, learning curve',
+            website: 'https://www.lightspeedhq.com'
+        }
+    ]
+};
+
+function getRecommendations(formData) {
+    const businessType = formData.business_type;
+    const monthlyVolume = parseFloat(formData.monthly_volume) || 0;
+    const avgTransaction = parseFloat(formData.avg_transaction) || 0;
+    const paymentEnv = formData.payment_environment;
+    const budgetPriority = formData.budget_priority;
+    
+    let candidates = [];
+    
+    // Get base candidates by business type
+    if (processors[businessType]) {
+        candidates = [...processors[businessType]];
+    }
+    
+    // Add cross-type recommendations based on payment environment
+    if (paymentEnv === 'online_only' || paymentEnv === 'mostly_online') {
+        candidates.push(...processors.online);
+    }
+    if (paymentEnv === 'in_person_only' || paymentEnv === 'mostly_in_person') {
+        candidates.push(...processors.retail);
+    }
+    
+    // Remove duplicates
+    candidates = candidates.filter((item, index, self) => 
+        index === self.findIndex(t => t.name === item.name)
+    );
+    
+    // Calculate costs and score each processor
+    const transactionCount = monthlyVolume / avgTransaction;
+    
+    candidates = candidates.map(processor => {
+        const transactionFees = (monthlyVolume * processor.rate / 100) + (transactionCount * processor.fixedFee);
+        const totalCost = transactionFees + processor.monthlyFee;
+        const effectiveRate = (totalCost / monthlyVolume) * 100;
+        
+        let score = 0;
+        
+        // Budget priority scoring
+        if (budgetPriority === 'lowest_total_cost') {
+            score = 1000 - totalCost; // Lower cost = higher score
+        } else if (budgetPriority === 'no_monthly_fees' && processor.monthlyFee === 0) {
+            score += 200;
+        } else if (budgetPriority === 'predictable_costs' && processor.monthlyFee > 0) {
+            score += 100;
+        }
+        
+        // Business type fit bonus
+        if (processors[businessType] && processors[businessType].some(p => p.name === processor.name)) {
+            score += 150;
+        }
+        
+        return {
+            ...processor,
+            transactionFees,
+            totalCost,
+            effectiveRate,
+            score
+        };
+    });
+    
+    // Sort by score (highest first), then by total cost (lowest first)
+    candidates.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return a.totalCost - b.totalCost;
+    });
+    
+    return candidates.slice(0, 3); // Return top 3
+}
+
 document.getElementById('processorForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -208,12 +456,51 @@ document.getElementById('processorForm').addEventListener('submit', function(e) 
     document.querySelector('.loading').style.display = 'block';
     document.querySelector('.results').style.display = 'none';
 
-    // Simulate processing time
+    // Get personalized recommendations
     setTimeout(() => {
+        const recommendations = getRecommendations(data);
+        displayResults(recommendations);
         document.querySelector('.loading').style.display = 'none';
         document.getElementById('results').style.display = 'block';
         document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
     }, 1500);
 });
+
+function displayResults(recommendations) {
+    const resultsHTML = recommendations.map((rec, index) => `
+        <div style="background: #F4E4BC; padding: 30px; border-radius: 20px; margin-bottom: 25px; color: #1B1B1B; border: 2px solid ${index === 0 ? '#DCA54A' : '#D4C8A8'}; position: relative;">
+            ${index === 0 ? '<div style="position: absolute; top: -10px; right: 15px; background: linear-gradient(135deg, #DCA54A, #E8B866); color: #1B1B1B; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 700;">Best Match</div>' : ''}
+            <h3 style="margin-bottom: 15px; color: #1B1B1B;">${rec.name}</h3>
+            <p style="color: #DCA54A; font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">💰 $${rec.totalCost.toFixed(2)}/month total cost • ${rec.effectiveRate.toFixed(2)}% effective rate</p>
+            <p style="margin-bottom: 15px; line-height: 1.5;">${rec.bestFor}</p>
+            <div style="margin-bottom: 15px;">
+                <strong style="color: #1B1B1B;">Key Features:</strong>
+                <ul style="margin: 8px 0 0 20px; color: #4A4A32;">
+                    ${rec.features.map(feature => `<li style="margin-bottom: 4px;">${feature}</li>`).join('')}
+                </ul>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <div style="margin-bottom: 8px;"><strong style="color: #1B1B1B;">✅ Pros:</strong> <span style="color: #4A4A32;">${rec.pros}</span></div>
+                <div style="margin-bottom: 8px;"><strong style="color: #1B1B1B;">⚠️ Cons:</strong> <span style="color: #4A4A32;">${rec.cons}</span></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <div style="font-size: 0.9rem; color: #4A4A32;">
+                    <div>Processing: ${rec.rate}% + $${rec.fixedFee.toFixed(2)}</div>
+                    <div>Monthly fee: $${rec.monthlyFee.toFixed(2)}</div>
+                </div>
+                <a href="${rec.website}" target="_blank" style="background: linear-gradient(135deg, #DCA54A, #C4923D); color: #1B1B1B; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Learn More →</a>
+            </div>
+        </div>
+    `).join('');
+    
+    document.getElementById('results').innerHTML = `
+        <h2 style="margin-bottom: 20px; color: #FFFFFF; text-align: center;">🎯 Your Personalized Recommendations</h2>
+        ${resultsHTML}
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background: rgba(220, 165, 74, 0.1); border-radius: 15px; border: 1px solid #DCA54A;">
+            <p style="color: #FFFFFF; margin-bottom: 15px;"><strong>💡 Pro Tip:</strong> Consider your growth plans when choosing. You can always upgrade later!</p>
+            <p style="color: #FAF5E5; font-size: 0.9rem;">Need help deciding? Contact these processors directly for custom quotes and setup assistance, or <a href="mailto:info@themerchantguide.com" style="color: #DCA54A; font-weight: 600; text-decoration: none;">email us</a> for personalized guidance.</p>
+        </div>
+    `;
+}
 </script>
 {{ end }}
