@@ -2,171 +2,69 @@
 
 {{ define "main" }}
 <section class="hero">
-    <h1>Say Goodbye to Payment Stress—Your <span class="highlight">All-In-One</span> Payment Solution Starts Here</h1>
-    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">Stop wasting time navigating complex payment systems- get rid of the noise and get simple solutions.</p>
-    <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" style="background: var(--bg-gradient-primary); color: var(--text-on-golden); padding: 16px 32px; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; transition: transform 0.2s;">Get Started</button>
+    <h1>Say Goodbye to Payment Stress—<br><span class="highlight">Simple</span> Payment Solutions Start Here</h1>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px auto 40px; max-width: 600px; flex-wrap: wrap;">
+        <img src="/images/logo_removedbg.png" alt="Guide" style="height: 24px; width: auto; opacity: 0.9; flex-shrink: 0;">
+        <p style="font-size: 1.25rem; color: #FAF5E5; margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3); text-align: center; flex: 1; min-width: 280px;">Find the perfect payment processor for your business in minutes, not weeks.</p>
+    </div>
+    <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" style="background: var(--bg-gradient-primary); color: var(--text-on-golden); padding: 20px 40px; border: none; border-radius: 12px; font-size: 20px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(220, 165, 74, 0.4);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(220, 165, 74, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(220, 165, 74, 0.4)'">Find My Perfect Processor →</button>
 </section>
 
 <section class="section" id="quiz">
     <div class="card">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: #1B1B1B; margin-bottom: 10px; font-size: 1.8rem;">Tell us about your business</h2>
+        <p style="color: #4A4A32; font-size: 1rem;">Answer 3 quick questions to get personalized recommendations</p>
+    </div>
+
     <form id="processorForm">
         <div class="form-group">
-            <label for="business_type">What best describes your business?</label>
+            <label for="business_type">🏪 What type of business do you run?</label>
             <select id="business_type" name="business_type" required>
-                <option value="">Select your business type</option>
-                <option value="retail">Small Retail Store (physical location)</option>
-                <option value="online">E-commerce Startup (online sales)</option>
-                <option value="multi_location">Regional Business (2+ locations)</option>
+                <option value="">Choose your business type</option>
+                <option value="retail">Retail Store (physical location)</option>
+                <option value="online">E-commerce/Online Business</option>
                 <option value="restaurant">Restaurant/Food Service</option>
-                <option value="service">Local Service Business</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="business_stage">What stage is your business in?</label>
-            <select id="business_stage" name="business_stage" required>
-                <option value="">Select business stage</option>
-                <option value="just_starting">Just starting (pre-launch or first 6 months)</option>
-                <option value="growing">Growing business (6 months - 2 years)</option>
-                <option value="established">Established business (2+ years)</option>
-                <option value="expanding">Expanding regionally (adding locations)</option>
+                <option value="service">Service Business</option>
+                <option value="multi_location">Multiple Locations</option>
             </select>
         </div>
 
         <div class="input-group">
             <div class="form-group">
-                <label for="monthly_volume">Expected Monthly Sales ($)</label>
-                <input type="number" id="monthly_volume" name="monthly_volume" placeholder="e.g. 8000" required>
-                <small style="color: #666; font-size: 14px;">Enter your current or projected monthly sales volume</small>
+                <label for="monthly_volume">💰 Monthly Sales Volume</label>
+                <select id="monthly_volume" name="monthly_volume" required>
+                    <option value="">Select range</option>
+                    <option value="2500">Under $5K/month</option>
+                    <option value="7500">$5K - $10K/month</option>
+                    <option value="15000">$10K - $20K/month</option>
+                    <option value="35000">$20K - $50K/month</option>
+                    <option value="75000">$50K+ /month</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="avg_transaction">Typical Transaction Amount ($)</label>
-                <input type="number" id="avg_transaction" name="avg_transaction" placeholder="e.g. 45" required>
-                <small style="color: #666; font-size: 14px;">Average dollar amount per sale</small>
+                <label for="payment_environment">📍 Where do you sell?</label>
+                <select id="payment_environment" name="payment_environment" required>
+                    <option value="">Choose location</option>
+                    <option value="in_person_only">In-person only</option>
+                    <option value="online_only">Online only</option>
+                    <option value="both_equal">Both online & in-person</option>
+                </select>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="payment_environment">Where do you primarily accept payments?</label>
-            <select id="payment_environment" name="payment_environment" required>
-                <option value="">Select payment environment</option>
-                <option value="in_person_only">In-person only (physical store/location)</option>
-                <option value="online_only">Online only (website/app)</option>
-                <option value="both_equal">Both in-person and online (roughly equal)</option>
-                <option value="mostly_in_person">Mostly in-person with some online</option>
-                <option value="mostly_online">Mostly online with some in-person</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="budget_priority">What's most important for your budget?</label>
+            <label for="budget_priority">⭐ What matters most to you?</label>
             <select id="budget_priority" name="budget_priority" required>
-                <option value="">Select budget priority</option>
-                <option value="lowest_total_cost">Lowest total cost per month</option>
-                <option value="no_monthly_fees">No monthly fees (pay-per-transaction only)</option>
-                <option value="predictable_costs">Predictable monthly costs</option>
-                <option value="value_for_features">Good value for features included</option>
+                <option value="">Select priority</option>
+                <option value="lowest_total_cost">Lowest fees possible</option>
+                <option value="no_monthly_fees">No monthly fees</option>
+                <option value="easy_setup">Easy setup & support</option>
+                <option value="advanced_features">Advanced features & tools</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="priority_features">What's your biggest priority? (Choose your top concerns)</label>
-            <div class="priority-features">
-                <div class="feature-category">
-                    <div class="category-header">
-                        <span class="category-icon">💰</span>
-                        <h4>Cost & Fees</h4>
-                    </div>
-                    <div class="feature-options">
-                        <label class="feature-option">
-                            <input type="checkbox" name="priority_features" value="lowest_fees">
-                            <div class="feature-content">
-                                <strong>Lowest processing fees</strong>
-                                <small>Minimize per-transaction costs</small>
-                            </div>
-                        </label>
-                        <label class="feature-option">
-                            <input type="checkbox" name="priority_features" value="no_monthly_costs">
-                            <div class="feature-content">
-                                <strong>No monthly fees</strong>
-                                <small>Pay only when you sell</small>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="feature-category">
-                    <div class="category-header">
-                        <span class="category-icon">🏪</span>
-                        <h4>Store Operations</h4>
-                    </div>
-                    <div class="feature-options">
-                        <label class="feature-option">
-                            <input type="checkbox" name="priority_features" value="pos_hardware">
-                            <div class="feature-content">
-                                <strong>Free POS equipment</strong>
-                                <small>Card readers, registers, tablets</small>
-                            </div>
-                        </label>
-                        <label class="feature-option">
-                            <input type="checkbox" name="priority_features" value="inventory_tools">
-                            <div class="feature-content">
-                                <strong>Inventory management</strong>
-                                <small>Track stock, automatic reordering</small>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="feature-category">
-                    <div class="category-header">
-                        <span class="category-icon">🚀</span>
-                        <h4>Growth & Online</h4>
-                    </div>
-                    <div class="feature-options">
-                        <label class="feature-option">
-                            <input type="checkbox" name="priority_features" value="online_store">
-                            <div class="feature-content">
-                                <strong>Built-in website builder</strong>
-                                <small>Create online store easily</small>
-                            </div>
-                        </label>
-                        <label class="feature-option">
-                            <input type="checkbox" name="priority_features" value="easy_integration">
-                            <div class="feature-content">
-                                <strong>Easy setup & integration</strong>
-                                <small>Get started quickly</small>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="feature-category">
-                    <div class="category-header">
-                        <span class="category-icon">📊</span>
-                        <h4>Business Management</h4>
-                    </div>
-                    <div class="feature-options">
-                        <label class="feature-option">
-                            <input type="checkbox" name="priority_features" value="detailed_analytics">
-                            <div class="feature-content">
-                                <strong>Sales reports & analytics</strong>
-                                <small>Track performance and trends</small>
-                            </div>
-                        </label>
-                        <label class="feature-option">
-                            <input type="checkbox" name="priority_features" value="customer_support">
-                            <div class="feature-content">
-                                <strong>Excellent customer support</strong>
-                                <small>Phone, chat, and email help</small>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <button type="submit" class="button">Find My Best Options</button>
+        <button type="submit" class="button" style="margin-top: 10px;">Get My Personalized Recommendations →</button>
     </form>
 
     <div class="loading">
@@ -374,7 +272,7 @@ const processors = {
 function getRecommendations(formData) {
     const businessType = formData.business_type;
     const monthlyVolume = parseFloat(formData.monthly_volume) || 0;
-    const avgTransaction = parseFloat(formData.avg_transaction) || 0;
+    const avgTransaction = 50; // Default average transaction
     const paymentEnv = formData.payment_environment;
     const budgetPriority = formData.budget_priority;
     
@@ -447,7 +345,7 @@ document.getElementById('processorForm').addEventListener('submit', function(e) 
     const formData = new FormData(this);
     const data = Object.fromEntries(formData);
 
-    if (!data.business_type || !data.monthly_volume || !data.avg_transaction || !data.payment_environment || !data.budget_priority) {
+    if (!data.business_type || !data.monthly_volume || !data.payment_environment || !data.budget_priority) {
         document.querySelector('.error').style.display = 'block';
         return;
     }

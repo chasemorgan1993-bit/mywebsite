@@ -23,10 +23,6 @@ description = "Find the perfect payment processor for your business"
     url = "/podcasts/"
     weight = 30
   
-  [[menu.main]]
-    name = "Resources"
-    url = "/resources/"
-    weight = 40
 
 [markup]
   [markup.goldmark]

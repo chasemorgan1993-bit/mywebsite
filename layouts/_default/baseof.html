@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
     {{ block "head" . }}{{ end }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ "css/variables.css" | relURL }}">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,7 +23,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .navigation {
             background: transparent;
-            padding: 30px 0;
+            padding: 20px 0;
             margin-bottom: 0;
             border-bottom: 1px solid var(--border-secondary);
         }
@@ -47,8 +52,30 @@
         }
         .hero {
             text-align: center;
-            padding: 80px 0 120px;
+            padding: 120px 0 160px;
             margin-bottom: 80px;
+            position: relative;
+            background: 
+                linear-gradient(rgba(107, 107, 71, 0.4), rgba(74, 74, 50, 0.4)),
+                url('/images/hero-bg-storefront.png'),
+                linear-gradient(135deg, #6B6B47 0%, #5A5A3F 50%, #4A4A32 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(107, 107, 71, 0.3);
+            z-index: 1;
+        }
+        .hero > * {
+            position: relative;
+            z-index: 2;
         }
         .hero h1 {
             font-size: 4rem;
@@ -56,6 +83,8 @@
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.02em;
+            color: #FFFFFF;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .highlight {
             color: var(--golden-primary);
@@ -431,8 +460,24 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .container { padding: 0 16px; }
-            .nav-menu { gap: 20px; }
-            .nav-menu a { font-size: 14px; }
+            .navigation { padding: 15px 0; }
+            .navigation > div {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .navigation > div > div:first-child {
+                justify-content: center;
+            }
+            .nav-menu { 
+                gap: 30px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .nav-menu a { 
+                font-size: 16px;
+                padding: 8px 16px;
+            }
             .hero h1 { font-size: 2.5rem; }
             .hero { padding: 60px 0 80px; }
             .section { padding: 40px 0; }
@@ -454,9 +499,14 @@
         @media (max-width: 480px) {
             .hero h1 { font-size: 2rem; }
             .nav-menu { 
-                flex-direction: column; 
-                gap: 16px;
-                align-items: center;
+                gap: 20px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-menu a {
+                font-size: 15px;
+                padding: 6px 12px;
             }
         }
     </style>
@@ -465,7 +515,10 @@
     <div class="container">
         <nav class="navigation">
             <div style="display: flex; align-items: center; justify-content: space-between;">
-                <img src="{{ "images/logo.svg" | relURL }}" alt="TheMerchantGuide Logo" style="width: 120px; height: 120px;">
+                <a href="/" style="display: flex; align-items: center; gap: 8px; text-decoration: none; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                    <img src="/images/logo_removedbg.png" alt="The Merchant Guide Logo" style="height: 36px; width: auto; vertical-align: middle;">
+                    <h2 style="color: var(--text-primary); font-size: 1.75rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; line-height: 1;">The <span style="color: var(--golden-primary);">Merchant</span> Guide</h2>
+                </a>
                 <div class="nav-menu">
                     {{ range .Site.Menus.main }}
                     <a href="{{ .URL }}" {{ if eq .URL $.RelPermalink }}class="active"{{ end }}>{{ .Name }}</a>
